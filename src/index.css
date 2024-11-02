@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::selection{
+    background-color: #A9CF5D;
+    color: black;
+}
+@font-face {
+    font-family: font1;
+    src: url(./asset/OldschoolGrotesk_W-Regular.ttf);
+}
+*{
+    font-family: font1;
+}
+.circle{
+    transition: all ease .3s;
+}
+.btn:hover .circle{
+    transform: translateX(7%) rotate(45deg);
+}
+.hi{
+    transform-origin: bottom;
+    animation: hi ease .8s infinite alternate;
+}
+@keyframes hi {
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(10deg);
+    }
+    0%{
+        transform: rotate(-10deg);
+    }
+    0%{
+        transform: rotate(0deg);
+    }
+}
+.heroTxt{
+    border-radius: 0px 0px 10px 0px;
+}
+.btnHero{
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.page1Arrow, .page1Arrow1{
+    transition: all ease .2s;
+}
+.page1ButtonPrime:hover .page1Arrow{
+    transform: translateX(0) translateY(0%);
+}
+.page1ButtonPrime:hover .page1Arrow1{
+    transform: translateX(100%) translateY(-100%);
+}
+
+.services{
+    border-bottom-left-radius: 15px;
+}
+.services{
+    transition: all ease .3s;
+}
+.page2Box video, .page2Box img{
+    transition: all ease .3s;
+}
+.page2Box:hover video, .page2Box:hover img {
+    object-position: bottom;
+}
+.page2Box:hover .services{
+    top: 0;
+}
+.page3box img{
+    transition: all ease .4s;
+}
+.page3box{
+    transition: all ease .4s;
+}
+.page3box:hover{
+    gap: 15px;
+}
+.page3box:hover img{
+    width: 150px;
+}
+.page3box:hover .page3Hero{
+    color: white;
+}
+
+.page5Txt  a{
+    text-decoration: underline;
+    color: white;
+    background-color: #26282C;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.letsWork{
+    animation: letsWork linear 14s infinite;
+}
+@keyframes letsWork {
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+.letsWork2{
+    transform: translateX(-100%);
+    animation: letsWork2 linear 14s infinite;
+}
+@keyframes letsWork2 {
+    from{
+        transform: translateX(-100%);
+    }
+    to{
+        transform: translateX(0%);
+    }
+}
+.dropBox{
+    transition: all ease .5s;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.dropBox:hover{
+    background-color: rgba(0, 0, 0, 0.866);
+}
