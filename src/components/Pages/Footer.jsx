@@ -23,7 +23,7 @@ const Footer = () => {
 
   return (
     <footer className='footer w-full min-h-screen flex items-center justify-center px-[25px] xl:px-[40px]'>
-        <div className={`w-full relative h-[90%] ${isClick ? 'bg-[#010202] text-white' : 'bg-[#1A1B1E]'} rounded-[15px] `}>
+        <div className={`w-full pb-[40px] lg:pb-0 relative h-[90%] ${isClick ? 'bg-[#010202] text-white' : 'bg-[#1A1B1E]'} rounded-[15px] `}>
             <SocialBar />
             <div className='px-[80px] py-[30px] h-[27vh] lg:h-[35vh] flex flex-col gap-[20px] xl:px-[180px]'>
                 <h1 className='text-[23px] leading-[1.2] lg:text-[40px] xl:text-[50px]'>Do you like <br /> what you see?</h1>
