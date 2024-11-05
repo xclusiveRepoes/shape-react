@@ -142,7 +142,7 @@ const NavBar = () => {
                             <>
                                 <h1 key={index} onMouseLeave={(() => {handleMOuseLeave(index)})} onMouseEnter={(() => {handleMouseEnter(index)})} className='menuElem relative capitalize font-extralight cursor-pointer text-[15px] xl:text-[16px] z-[110] leading-[1.1] overflow-x-hidden h-[20px]'>
                                     {elem}
-                                    <div className={`underline-${index} absolute w-0 h-[1px] ${isClick ? 'bg-black' : 'bg-black'}`}></div>
+                                    <div className={`underline-${index} absolute w-0 h-[1px] ${isClick ? 'bg-black' : 'bg-white'}`}></div>
                                 </h1>
                             </>
                         )
