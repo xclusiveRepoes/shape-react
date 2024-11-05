@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import v1 from '../../asset/v1.mp4'
 import v2 from '../../asset/v2.webp'
 import v3 from '../../asset/v3.webp'
@@ -9,6 +9,20 @@ import GoogleImage from '../../asset/google.webp'
 import CustomCursor from '../CustomCursor/CustomCursor'
 
 const Page2 = () => {
+
+    const [isClick, setIsClick] = useState(() => {
+        return JSON.parse(localStorage.getItem('isClick')) || false;
+      });
+      useEffect(() => {
+        const handleStorageChange = () => {
+          setIsClick(JSON.parse(localStorage.getItem('isClick')));
+        };
+         window.addEventListener('storage', handleStorageChange);
+    
+        return () => {
+          window.removeEventListener('storage', handleStorageChange);
+        };
+      }, []);
 
     const data = [
         {date: '2023', name: 'Gary Neville', title: ['Refreshing Gary', 'Neville digital presence'], services: ['Branding', 'Website'], video: v1},
@@ -36,11 +50,11 @@ const Page2 = () => {
                     return (
                         <div key={index} className={`page2Box overflow-hidden ${index === 0 && 'md:mt-[70px] lg:mt-[150px] pb-[40px]'}`}>
                             <div className='w-[87vw] h-[70vw] md:w-[44vw] sm:h-[60vw] md:h-[31vw] lg:w-[40vw] xl:w-[42vw] lg:h-[30vw] relative rounded-[20px] overflow-hidden'>
-                                <div className='services absolute w-[210px] h-[45px] bg-[#0E0F11] right-0 top-[-100%] flex gap-[5px] pl-[15px] cursor-pointer'>
+                                <div className={`services absolute w-[210px] h-[45px] ${isClick ? 'bg-white' : 'bg-[#0E0F11]'} right-0 top-[-100%] flex gap-[5px] pl-[15px] cursor-pointer`}>
                                     {
                                         elem.services.map((element, i) => {
                                             return (
-                                                <div key={i} className='w-[100px] h-[32px] bg-[#26282C] rounded-full flex items-center justify-center'>
+                                                <div key={i} className={`w-[100px] h-[32px] ${isClick ? 'bg-[#e1e1e1dc]' : 'bg-[#26282C]'} rounded-full flex items-center justify-center`}>
                                                     <h1 className='text-[14px]'>{element}</h1>
                                                 </div>
                                             )

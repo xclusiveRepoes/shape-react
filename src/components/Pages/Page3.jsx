@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Page3Button from '../Button/Page3Button'
 import gsap from 'gsap'
 
@@ -12,6 +12,20 @@ import Shape from '../../asset/shape.webp'
 import Page3CustomCursor from '../CustomCursor/Page3CustomCursor'
 
 const Page3 = () => {
+
+    const [isClick, setIsClick] = useState(() => {
+        return JSON.parse(localStorage.getItem('isClick')) || false;
+      });
+      useEffect(() => {
+        const handleStorageChange = () => {
+          setIsClick(JSON.parse(localStorage.getItem('isClick')));
+        };
+         window.addEventListener('storage', handleStorageChange);
+    
+        return () => {
+          window.removeEventListener('storage', handleStorageChange);
+        };
+      }, []);
 
     const Elements = [
         {title: 'Brand Identity', img:img1},
@@ -58,7 +72,7 @@ const Page3 = () => {
     }
 
   return (
-    <div className='page3 w-full min-h-screen bg-[#1A1B1E] rounded-t-[20px] pt-[50px] lg:pt-[100px] px-[15px] lg:px-[40px]'>
+    <div className={`page3 w-full min-h-screen ${isClick ? 'bg-black' : 'bg-[#1A1B1E]'} ${isClick && 'text-white'} rounded-t-[20px] pt-[50px] lg:pt-[100px] px-[15px] lg:px-[40px] xl:px-[6vw]`}>
         <Page3CustomCursor />
         <div className='sm:w-[350px] md:w-[450px] lg:flex lg:w-full justify-between lg:items-start'>
             <h1 className='flex items-center gap-[8px] text-[14px]'><div className='w-[5px] h-[5px] bg-white rounded-full'></div>Our Expertise</h1>
@@ -72,7 +86,7 @@ const Page3 = () => {
                         return(
                             <div onMouseLeave={handleMouseLeave} onMouseEnter={() => {handleMouseEnter(index)}} key={index} className={`${window.innerWidth>=1024 && 'page3box'} w-full lg:w-[67%] flex cursor-pointer items-center gap-[35px] py-[15px] lg:py-[15px] lg:gap-[0] border-b-[1px] border-[#ffffff35]`}>
                                 <img src={elem.img} alt="" className='rounded-[15px] w-[90px] lg:w-0 md:w-[150px] h-[70px] md:h-[110px] lg:h-[100px] object-cover' />
-                                <h1 className={`page3Hero page3Hero-${index} text-[8vw] text-[white] leading-[1] lg:text-[7vw]`}>{elem.title}</h1>
+                                <h1 className={`page3Hero page3Hero-${index} text-[8vw] text-[white] leading-[1] xl:pt-[20px] lg:text-[7vw]`}>{elem.title}</h1>
                             </div>
                         )
                     })
